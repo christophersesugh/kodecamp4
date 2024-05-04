@@ -1,5 +1,3 @@
-Here are some examples of how closures are used in common JavaScript constructs:
-
 # Closures in setTimeout and setInterval:
 
 - `setTimeout` and `setInterval` take a callback function as an argument and execute it after a specified delay or interval.
@@ -46,27 +44,6 @@ greetAfterDelay("Kodecamp").then((message) => {
 });
 ```
 
-Here's an example of a promise function that utilizes closures:
-
-```javascript
-function delayWithMessage(message, delayMs) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(message);
-    }, delayMs);
-  });
-}
-
-function greetAfterDelay(name) {
-  // Closure captures the name variable
-  return delayWithMessage(`Hello, ${name}!`, 2000);
-}
-
-greetAfterDelay("Kodecamp").then((message) => {
-  console.log(message); // Output: "Hello, Kodecamp!" after 2 seconds
-});
-```
-
 In this example:
 
 1. **`delayWithMessage`:**
@@ -93,7 +70,7 @@ In this example:
 **Example:**
 
 ```javascript
-async function loadData(url) {
+async function fetchData(url) {
   const response = await fetch(url);
   const data = await response.json();
   return data;
@@ -101,7 +78,7 @@ async function loadData(url) {
 
 (async () => {
   try {
-    const fetchedData = await loadData(
+    const fetchedData = await fetchData(
       "https://jsonplaceholder.typicode.com/todos/1"
     );
     console.log("Fetched data:", fetchedData);
@@ -111,6 +88,6 @@ async function loadData(url) {
 })();
 ```
 
-- In this example, the `loadData` function uses `async/await` to fetch data asynchronously.
+- In this example, the `fetchData` function uses `async/await` to fetch data asynchronously.
 - The outer `async` function creates a closure that captures any variables used within it.
 - This allows the code to appear more linear while still handling asynchronous operations effectively.

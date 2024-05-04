@@ -8,12 +8,30 @@ Both function declarations and function expressions can be used to create closur
 
 **Example:**
 
+Regular function declaration
+
 ```javascript
 function createMultiplierDeclaration(multiplier) {
   function multiply(number) {
     return number * multiplier;
   }
 
+  return multiply;
+}
+
+// Create a multiplier for 2 using function declaration
+const multiplierDeclaration = createMultiplierDeclaration(2);
+
+// Use the closure to multiply a number
+const declarationResult = multiplierDeclaration(5);
+console.log(`5 multiplied by 2 (declaration): ${declarationResult}`); // Output: 10
+```
+
+Arrow function declaration
+
+```javascript
+function createMultiplierDeclaration(multiplier) {
+  const multiply = (number) => number * multiplier;
   return multiply;
 }
 
@@ -33,10 +51,45 @@ console.log(`5 multiplied by 2 (declaration): ${declarationResult}`); // Output:
 
 **Example:**
 
+Regular function expression
+
+```javascript
+function createMultiplierExpression(multiplier) {
+  return function (number) {
+    return number * multiplier;
+  };
+}
+
+// Create a multiplier for 2 using function declaration
+const multiplierDeclaration = createMultiplierExpression(2);
+
+// Use the closure to multiply a number
+const declarationResult = multiplierDeclaration(5);
+console.log(`5 multiplied by 2 (declaration): ${declarationResult}`); // Output: 10
+```
+
+Arrow function expression
+
+> Notice the implicit return
+
 ```javascript
 function createMultiplierExpression(multiplier) {
   return (number) => number * multiplier;
 }
+
+// Create a multiplier for 2 using function declaration
+const multiplierDeclaration = createMultiplierExpression(2);
+
+// Use the closure to multiply a number
+const declarationResult = multiplierDeclaration(5);
+console.log(`5 multiplied by 2 (declaration): ${declarationResult}`); // Output: 10
+```
+
+One liner
+
+```javascript
+const createMultiplierDeclaration = (multiplier) => (number) =>
+  number * multiplier;
 
 // Create a multiplier for 2 using function declaration
 const multiplierDeclaration = createMultiplierDeclaration(2);
