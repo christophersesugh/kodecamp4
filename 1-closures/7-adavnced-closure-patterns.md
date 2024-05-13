@@ -27,24 +27,74 @@ console.log(add5(10)); // Output: 15
 **Example:**
 
 ```javascript
-function fibonacci(n) {
-  if (n <= 1) {
-    return n;
-  }
+function useMemo(fn) {
+  let cache = {};
 
-  // Memoization using a closure
-  const cache = {};
-  if (!cache[n]) {
-    cache[n] = fibonacci(n - 1) + fibonacci(n - 2);
-  }
-  return cache[n];
+  return function (...args) {
+    const key = JSON.stringify(args);
+    if (cache[key] !== undefined) {
+      return cache[key];
+    }
+    cache[key] = fn.apply(this, args);
+    return cache[key];
+  };
 }
 
-console.log(fibonacci(40)); // Output: 165580141
+const add = (a, b) => {
+  console.log("add called only once");
+  return a + b;
+};
+
+const memoizedAdd = useMemo(add);
+console.log(memoizedAdd(1, 2));
+console.log(memoizedAdd(1, 2));
+console.log(memoizedAdd(1, 3));
+console.log(memoizedAdd(1, 3));
 ```
 
-- In this example, the `fibonacci` function uses a closure to store the calculated Fibonacci numbers in a `cache` object.
+- In this example, the `useMemo` function uses a closure to store the calculated input numbers in a `cache` object.
 - Subsequent calls with the same argument retrieve the cached value, avoiding unnecessary recalculations.
+
+```javascript
+function useCallback(fn) {
+  let lastArgs = [];
+  let lastResult = null;
+
+  return function (...args) {
+    if (
+      args.length !== lastArgs.length ||
+      args.some((arg, index) => arg !== lastArgs[index])
+    ) {
+      console.log("Calculating");
+      lastArgs = args;
+      lastResult = fn(...args);
+    } else {
+      console.log("Cached");
+    }
+    return lastResult;
+  };
+}
+
+function add(a, b) {
+  return a + b;
+}
+
+const memoizedAdd = useCallback(add);
+
+console.log(memoizedAdd(1, 2)); // Calculating 3
+console.log(memoizedAdd(1, 2)); // Cached 3
+console.log(memoizedAdd(1, 3)); // Calculating 4
+console.log(memoizedAdd(1, 3)); // Cached 4
+```
+
+**What does the useCallback function do?**
+**How can you make the useCallback function async?**
+**How can it be restructured to be used like so?**
+
+```javascript
+const returnedValue = useCallback(callback);
+console.log(returnedValue);
+```
 
 # Closures in Functional Programming:
 

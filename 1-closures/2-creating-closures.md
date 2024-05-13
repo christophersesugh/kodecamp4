@@ -1,6 +1,6 @@
-Both function declarations and function expressions can be used to create closures in JavaScript. Here's a breakdown of how they work:
+Both function declarations and function expressions can be used to create closures in JavaScript.
 
-**Closures with Function Declarations:**
+# **Closures with Function Declarations:**
 
 1. **Function Declaration:** A function is declared using the `function` keyword followed by its name and parameters.
 2. **Inner Function:** An inner function is defined within the outer function.
@@ -43,7 +43,7 @@ const declarationResult = multiplierDeclaration(5);
 console.log(`5 multiplied by 2 (declaration): ${declarationResult}`); // Output: 10
 ```
 
-**Closures with Function Expressions:**
+# **Closures with Function Expressions:**
 
 1. **Function Expression:** A function is defined as an anonymous function expression using the `function` keyword without a name.
 2. **Inner Function:** An inner function is defined within the outer function expression.

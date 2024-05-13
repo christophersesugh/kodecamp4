@@ -8,6 +8,7 @@ function one() {
   };
 }
 
+console.log(a);
 const k = one();
 const l = k();
 l();
