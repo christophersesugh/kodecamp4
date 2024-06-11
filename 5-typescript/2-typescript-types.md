@@ -541,7 +541,7 @@ In TypeScript, type compatibility determines whether a value of one type can be 
 - **Compatible:**
 
   ```typescript
-  let name: string = "Alice"; // Assigning string to a string variable
+  let name: string = "Kodecamp"; // Assigning string to a string variable
   let age: number = 30; // Assigning number to a number variable
   interface Person {
     name: string;

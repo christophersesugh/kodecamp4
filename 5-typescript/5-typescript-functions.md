@@ -29,7 +29,7 @@ function greet(name: string): string {
   return "Hello, " + name + "!";
 }
 
-let message = greet("Alice"); // Type of message is inferred as string
+let message = greet("Kodecamp"); // Type of message is inferred as string
 ```
 
 **Optional Parameters:**

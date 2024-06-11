@@ -78,7 +78,10 @@ Intersection types, along with union types, are another way to combine types in 
 
   type UserAdmin = User & Admin; // Intersection type: User & Admin
 
-  let combined: UserAdmin = { name: "Alice", permissions: ["read", "write"] };
+  let combined: UserAdmin = {
+    name: "Kodecamp",
+    permissions: ["read", "write"],
+  };
   ```
 
   In this example, `UserAdmin` is an intersection type that combines the properties of `User` and `Admin`.
@@ -147,7 +150,7 @@ function login(credentials: LoginInput): void {
   // Handle login logic based on the type of credentials (string or number)
 }
 
-login("alice"); // Valid (string)
+login("Kodecamp"); // Valid (string)
 login(123456); // Valid (number)
 ```
 
@@ -192,7 +195,7 @@ In this example, `PersonKeys` becomes a type that represents all the possible ke
    }
 
    let person: Person = {
-     name: "Alice",
+     name: "Kodecamp",
      age: 30,
      hobbies: ["reading", "coding"],
    };
