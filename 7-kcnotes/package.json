@@ -7,7 +7,9 @@
     "dev": "nodemon",
     "build": "NODE_NO_WARNINGS=1 node --loader ts-node/esm esbuild.config.ts",
     "start": "node ./build/index.js",
-    "test": ""
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
   },
   "keywords": [
     "kcnotes",
@@ -22,8 +24,11 @@
     "@types/fs-extra": "^11.0.4",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.7",
+    "@vitest/coverage-v8": "^1.6.0",
+    "@vitest/ui": "^1.6.0",
     "esbuild": "^0.21.5",
     "nodemon": "^3.1.4",
+    "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2",
     "vitest": "^1.6.0"

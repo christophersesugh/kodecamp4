@@ -1,19 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "ESNext",
     "esModuleInterop": true,
-    "strict": true,
-    "noImplicitAny": true,
     "skipLibCheck": true,
+    "target": "ES2022",
     "verbatimModuleSyntax": true,
     "allowJs": true,
     "resolveJsonModule": true,
     "moduleDetection": "force",
+    "strict": true,
     "noUncheckedIndexedAccess": true,
     "moduleResolution": "Bundler",
+    "module": "ESNext",
     "noEmit": true,
-    "lib": ["ES2022"]
+    "lib": ["es2022"],
+    "types": ["node"]
   },
   "exclude": ["node_modules", "src/**/*.test.ts"]
 }
