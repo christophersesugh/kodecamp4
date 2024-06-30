@@ -1,5 +1,5 @@
 import { app } from "./app";
-import { closeDB, initDB } from "./database";
+import { applyMigrations, closeDB, initDB } from "./database";
 import { loadEnv } from "./utils/load-env";
 
 const { NODE_ENV } = process.env;
@@ -9,7 +9,7 @@ if (NODE_ENV !== "production") {
 }
 
 const { PORT } = process.env;
-
+await applyMigrations();
 initDB()
   .then(() => {
     console.log("Connected to DB.");

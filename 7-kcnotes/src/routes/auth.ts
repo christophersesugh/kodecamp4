@@ -13,7 +13,7 @@ export function handleAuth(req: IncomingMessage, res: ServerResponse) {
   } else if (path === `${PATHS.AUTH}/me` && method === HTTP_METHODS.GET) {
     me(req, res);
   } else if (path === `${PATHS.AUTH}/signout` && method === HTTP_METHODS.GET) {
-    signout(req, res);
+    signout(res);
   } else {
     notFoundError(res, "Auth route not found");
   }
