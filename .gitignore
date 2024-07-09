@@ -1,6 +1,0 @@
-**/node_modules
-**/build
-**/dist
-test.js
-.DS_Store
-.git

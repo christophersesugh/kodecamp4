@@ -1,0 +1,22 @@
+{
+  "name": "8-prisma",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "exec": "ts-node index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "prisma": "^5.16.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.16.1"
+  }
+}
