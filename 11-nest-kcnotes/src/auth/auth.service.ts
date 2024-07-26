@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { SignupDto } from './dto/signup-user.dto';
 
 @Injectable()
@@ -18,7 +18,7 @@ export class AuthService {
 
     if (existingUser) {
       throw new BadRequestException(
-        `User with username '${user.username}' already exist.`,
+        `User with username '${existingUser.username}' already exists.`,
       );
     }
 
@@ -32,11 +32,11 @@ export class AuthService {
       },
     });
 
-    return {
-      token: this.jwt.sign({
-        id: createdUser.id,
-      }),
-    };
+    const token = this.jwt.sign({
+      id: createdUser.id,
+    });
+
+    return { token };
   }
 
   async signin(user: SignupDto): Promise<{ token: string }> {
