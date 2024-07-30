@@ -8,8 +8,9 @@ if (NODE_ENV !== "production") {
   loadEnv();
 }
 
-const { PORT } = process.env;
 await applyMigrations();
+
+const { PORT } = process.env;
 initDB()
   .then(() => {
     console.log("Connected to DB.");

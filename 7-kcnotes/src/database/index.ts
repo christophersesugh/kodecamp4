@@ -27,8 +27,9 @@ const schema = `
   );
 `;
 
-const dbName = "sqlite.db";
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+const dbName = process.env.DATABASE_URL!;
+const dbDir = path.join(process.cwd(), "database", dbName);
+// const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 let db: Database<sqlite3.Database, sqlite3.Statement> | null = null;
 
@@ -37,7 +38,7 @@ export async function initDB(): Promise<
 > {
   if (!db) {
     db = await open({
-      filename: path.join(__dirname, dbName),
+      filename: dbDir,
       driver: sqlite3.Database,
     });
   }
@@ -55,13 +56,13 @@ export async function closeDB(): Promise<void> {
 export async function applyMigrations() {
   try {
     const db = await initDB();
-    const migrationsApplied = await db.get(
-      "SELECT applied FROM migrations WHERE id = 1"
-    );
-    if (migrationsApplied && migrationsApplied.applied) {
-      console.log("Migrations have already been applied.");
-      return;
-    }
+    // const migrationsApplied = await db.get(
+    //   "SELECT applied FROM migrations WHERE id = 1"
+    // );
+    // if (migrationsApplied && migrationsApplied.applied) {
+    //   console.log("Migrations have already been applied.");
+    //   return;
+    // }
     await db.exec(schema);
     await db.run(
       "INSERT OR REPLACE INTO migrations (id, applied) VALUES (1,1)"

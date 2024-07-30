@@ -20,7 +20,11 @@ export class NotesService {
     return this.notes;
   }
 
+  getNote(id: number) {
+    return this.notes.find((note) => note.id === Number(id));
+  }
+
   createNote(note: Note) {
-    this.notes.push(note);
+    return this.notes.push(note);
   }
 }

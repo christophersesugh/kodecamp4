@@ -25,8 +25,8 @@ export class NotesController {
   }
 
   @Get(':id')
-  getNote(@Param('id') id: string) {
-    return `This note has an id of ${id}`;
+  getNote(@Param('id') id: number) {
+    return this.noteService.getNote(id);
   }
 
   @Patch()
